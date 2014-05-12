@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AppMeteo.Models.Station>
+
+@{
+    ViewBag.Title = "Calculer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Choisissez la station pour laquelle vous désirez connaitre des statistiques simples</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pays.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodePostal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pays.Nom)
+        </td>
+        <td>
+           @Html.ActionLink(item.CodePostal.ToString(), "GetForm","Station", new { id=item.StationId}, null)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AppMeteo.Models.Mesure>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Station.Pays.Nom)
+        </th>
+        <th>
+            @Html.Encode("Station")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MomentPrelevement)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @Html.ActionLink(item.Station.Pays.Nom, "Details", "Pays", new {id=item.Station.Pays.PaysId}, null)
+        </td>
+        <td>
+            @Html.ActionLink(item.StationId.ToString(), "Details", "Station", new { id=item.StationId}, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MomentPrelevement)
+        </td>
+        <td>
+            @Html.ActionLink("Valeurs des prélèvements", "Select", "Valeur", new { id = item.MesureId }, null)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MesureId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MesureId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MesureId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,56 @@
+﻿@model AppMeteo.Models.Valeur
+
+@{
+    ViewBag.Title = "Recherche par pays";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    //$(document).ready(function () {
+    //    function success(json) {
+    //        var d = JSON.Parse(data);
+    //        $.each(data.items, function (item, i) {
+    //            output = '<div>' + item.Station.StationId + ' ' + '' + '</div>';
+    //            $("#target").append(output);
+    //        });
+    //    }
+    //});
+</script>
+
+<h2>Recherche</h2>
+
+<h6>Sélectionnez le pays :</h6>
+<div id="target">
+        @using (Ajax.BeginForm("Recherche", "Pays",
+        new AjaxOptions()
+        {
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "POST",
+            UpdateTargetId = "target",
+            OnSuccess = "success",
+        }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mesure.Station.Pays.Nom, "Pays", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Pays", (SelectList)ViewBag.PaysId, "Sélectionner un pays")
+                        @Html.ValidationMessageFor(model => model.Mesure.Station.Pays.Nom)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Rechercher" class="btn btn-default" />
+                    </div>
+                </div>
+
+
+            </div>
+        }
+
+</div>

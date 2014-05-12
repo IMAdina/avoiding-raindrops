@@ -1,0 +1,92 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    color: #07367A;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.body-content {
+        background-color:#D9EAF4;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+.jumbotron {
+    background-image: url("img/fond-ciel.jpg");
+    background-position: -750px;
+    text-align: center;
+    
+	animation: animatedBackground 40s linear infinite;
+}
+.navbar, .navbar-inverse, .navbar-fixed-top{
+    background-color: #07367A;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color:#07367A;
+}
+.jumbotron h1{
+    color: #F2A218;
+}
+.lead {
+    color: #fff;
+}
+.dropdown-menu {
+    background-color: #D9EAF4;
+}
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+        background-color: #07367A;
+}
+@-webkit-keyframes animatedBackground {
+	from { background-position: 0; }
+	to { background-position: 100%; }
+}
+@-moz-keyframes animatedBackground {
+	from { background-position: 0; }
+	to { background-position: 100%; }
+}
+@keyframes animatedBackground {
+	from { background-position: 0; }
+	to { background-position: 100%; }
+}
+.bouton {
+    display: inline-block;
+    width:157px;
+    height: 112px;
+    background-repeat: no-repeat;
+    text-align: center;
+    color:#07367A;
+    background-image:url(img/cloud.png);
+    padding-left:72px;
+}

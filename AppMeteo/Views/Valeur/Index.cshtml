@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AppMeteo.Models.Valeur>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Mesure")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mesure.Station.Pays.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mesure.Station.CodePostal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Temperature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pression)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precipitations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ATMO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelIem => item.Mesure.Station.Pays.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mesure.Station.CodePostal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Temperature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pression)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precipitations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ATMO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ValeurId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ValeurId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ValeurId })
+        </td>
+    </tr>
+}
+
+</table>

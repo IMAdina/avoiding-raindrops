@@ -1,0 +1,35 @@
+﻿@model AppMeteo.Models.Station
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Station</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pays.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pays.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodePostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodePostal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

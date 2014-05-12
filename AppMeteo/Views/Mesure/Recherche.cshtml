@@ -1,0 +1,78 @@
+﻿@model AppMeteo.Models.Mesure
+
+@{
+    ViewBag.Title = "Recherche par date";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Recherche par date</h2>
+@Scripts.Render("~/bundles/dropdownlist")
+<script>
+    $(document).ready(function () {
+        function success() {
+           
+        }
+
+    });
+
+</script>
+
+<h6>Sélectionnez le pays et la station pour laquelle vous désirez connaitre les mesures pour un intervalle de temps déterminé:</h6>
+<div id="myContent">
+    <div id="target">
+        @using (Ajax.BeginForm("Recherche", "Mesure", null,
+        new AjaxOptions()
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "target",
+            OnSuccess = " var obj = JSON.parse(data);"+
+            "var output='';"+
+                "output = '<p>Température: ' + obj.Temperature + '</p>"+
+                    "<p>Pression: ' + obj.Pression + '</p>" +
+                    "<p>Précipitations: ' + obj.Precipitations + '</p>" +
+                    "<p>ATMO: ' + obj.ATMO + '<p>';"+
+                "$('#myContent').html(output);",
+        },
+        new
+        {
+            id = "MesuressFormId",
+        }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Station.Pays.Nom, "Pays", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Pays", (SelectList)ViewBag.Pays, "Sélectionnez un pays", new { id = "Pays" })
+                        @Html.ValidationMessageFor(model => model.Station.Pays.Nom)
+                    </div>
+                </div>
+                <div id="ChoixStations" class="form-group">
+                    @Html.LabelFor(model => model.Station.CodePostal, "Stations", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <select id="Stations" name="Stations"></select>
+                    </div>
+                </div>
+
+                <div id="ChoixDates" class="form-group">
+                    @Html.LabelFor(model => model.MomentPrelevement, "Mesures", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <select id="Mesures" name="Mesures"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input id="BoutonSubmit" type="submit" value="Rechercher" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>

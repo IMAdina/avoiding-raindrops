@@ -1,0 +1,50 @@
+﻿@model AppMeteo.Models.Mesure
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Attention: tous les prélèvements associés seront supprimmés définitivement!</h3>
+
+<div>
+    <h4>Mesure</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Station.StationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Station.StationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valeur.ValeurId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valeur.ValeurId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MomentPrelevement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MomentPrelevement)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

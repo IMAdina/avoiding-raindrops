@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Calculer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quelques valeurs calculés pour les moments de prélèvement précisés</h2>
+
+<hr />
+@if (ViewBag.ErrorMessage != null)
+{
+    <p>@ViewBag.ErrorMessage</p>
+}else{
+<dl class="dl-horizontal">
+    <dt>
+        @Html.Encode("Temp min")
+    </dt>
+    <dd>
+        @decimal.Parse(ViewBag.TempMin)
+    </dd>
+    <dt>
+        @Html.Encode("Temp max")
+    </dt>
+    <dd>
+        @decimal.Parse(ViewBag.TempMax)
+    </dd>
+    <dt>
+        @Html.Encode("Temp moyenne")
+    </dt>
+    <dd>
+        @decimal.Parse(ViewBag.TempAverage)
+    </dd>
+</dl>
+}

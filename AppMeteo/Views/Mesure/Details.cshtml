@@ -1,0 +1,43 @@
+﻿@model AppMeteo.Models.Mesure
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mesure</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Station.StationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Station.StationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valeur.ValeurId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valeur.ValeurId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MomentPrelevement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MomentPrelevement)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MesureId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
