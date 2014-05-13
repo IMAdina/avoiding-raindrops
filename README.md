@@ -1,7 +1,7 @@
 avoiding-raindrops
 ==================
 
-ASP .NET MVC 4.5 Application, SQL Server 2012, Bootstrap and Jquery hosted as a Web Site on Windows Azure 
+ASP .NET MVC 5 Application, SQL Server 2012, Bootstrap and Jquery hosted as a Web Site on Windows Azure 
 @ http://avoiding-raindrops.azurewebsites.net/
  
 This application was the object of  days exam at the end of the year intensive training in OO Progamming on different technilogies.
