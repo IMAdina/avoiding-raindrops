@@ -29,7 +29,6 @@ namespace AppMeteo.Models
         private static double RandomNumberBetween(double minValue, double maxValue)
         {
             var next = random.NextDouble();
-
             return minValue + (next * (maxValue - minValue));
         }
 

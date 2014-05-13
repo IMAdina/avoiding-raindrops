@@ -107,9 +107,18 @@ namespace AppMeteo.Controllers
             Station station = db.Stations.Find(id);
             string list = form[1];
             string [] dates=list.Split(new Char [] {','} );
-            DateTime dateInitiale = DateTime.Parse(dates[0]);
-            DateTime dateFinale = DateTime.Parse(dates[1]);
-
+            DateTime dateInitiale = new DateTime();
+            DateTime dateFinale = new DateTime();
+            if (dates[0] != "" && dates[1] != "")
+            {
+                dateInitiale = DateTime.Parse(dates[0]);
+                dateFinale = DateTime.Parse(dates[1]);
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Vous devez sélectionner deux moments de prélèvements dans la liste déroulante.";
+                return PartialView("_Resultat");
+            }
             List<decimal> listTemperatures = new List<decimal>();
 
             foreach (Mesure item in station.Mesures)
