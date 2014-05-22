@@ -119,3 +119,10 @@ input[type="checkbox"].input-validation-error {
 .dropdown{
     cursor:pointer;
 }
+.target{
+    margin:2px;
+    width: 200px;
+    border: 1px solid #07367A;
+    text-align: center;
+    display: inline-block;
+}

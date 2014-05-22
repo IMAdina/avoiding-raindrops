@@ -19,19 +19,24 @@
 
 <h6>Sélectionnez le pays et la station pour laquelle vous désirez connaitre les mesures pour un intervalle de temps déterminé:</h6>
 <div id="myContent">
-    <div id="target">
+
         @using (Ajax.BeginForm("Recherche", "Mesure", null,
         new AjaxOptions()
         {
             HttpMethod = "POST",
-            UpdateTargetId = "target",
             OnSuccess = " var obj = JSON.parse(data);"+
             "var output='';"+
-                "output = '<p>Température: ' + obj.Temperature + '</p>"+
-                    "<p>Pression: ' + obj.Pression + '</p>" +
-                    "<p>Précipitations: ' + obj.Precipitations + '</p>" +
-                    "<p>ATMO: ' + obj.ATMO + '<p>';"+
-                "$('#myContent').html(output);",
+            "var pays=$('#Pays option:selected').text();"+
+            "var station=$('#Stations option:selected').text();" +
+            "var date=$('#ChoixDates option:selected').text();"+
+                "output = '<div class=\"target\">Pays: '+pays+'</br>"+
+                "Station Id: '+station+'</br>"+
+                "Instant: '+date+'"+
+                "<p>Température: ' + obj.Temperature + '</br>"+
+                    "Pression: ' + obj.Pression + '</br>" +
+                    "Précipitations: ' + obj.Precipitations + '</br>" +
+                    "ATMO: ' + obj.ATMO + '</div>';"+
+                "$('#myContent').append(output);",
         },
         new
         {
@@ -73,6 +78,4 @@
 
             </div>
         }
-
     </div>
-</div>
