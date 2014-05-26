@@ -7,7 +7,7 @@ using System.Web;
 
 namespace AppMeteo.Models
 {
-    public class ContextInitializer : DropCreateDatabaseAlways<MyContext>
+    public class ContextInitializer : CreateDatabaseIfNotExists<MyContext>
     {
         protected override void Seed(MyContext context)
         {

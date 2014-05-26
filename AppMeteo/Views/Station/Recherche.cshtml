@@ -10,18 +10,22 @@
 
 
 <h6>Sélectionnez d'abord le pays, ensuite la station pour laquelle vous désirez connaitre les mesures par intervalle de 30 minutes:</h6>
-<div id="target">
+
     @using (Ajax.BeginForm("Recherche", "Station", null,
         new AjaxOptions()
         {
             HttpMethod = "POST",
-            UpdateTargetId = "target",
             OnSuccess = "var obj = JSON.parse(data);" +
+            "var pays= $('#Pays option:selected').text();"+
+            "var station= $('#Stations option:selected').text();"+
             "var output='';"+
             "$.each(obj, function (i, item) {" +
-                "output += '<p>Date et moment du prélèvement: '+ obj[i].MomentPrelevement +' : Température=> ' + item.Valeur.Temperature + ' ; Pression=> ' + item.Valeur.Pression +'; Précipitations=> '+item.Valeur.Precipitations+ ';</p>';"+
+                "output += '<div class=\"target\">"+
+                "Pays: '+pays+'</br>"+
+                "StationId: '+station+'</br>"+
+                "Instant: '+ obj[i].MomentPrelevement +'</br>Température: ' + item.Valeur.Temperature + '</br> Pression: ' + item.Valeur.Pression +'</br>Précipitations: '+item.Valeur.Precipitations+ ';</div>';"+
                                     "});" +
-                "$('#target').html(output);",
+                "$('.form-horizontal').append(output);",
         },
         new
         {
@@ -57,5 +61,4 @@
         </div>
     }
 
-</div>
 
