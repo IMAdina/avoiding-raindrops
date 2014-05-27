@@ -50,6 +50,8 @@ input[type="checkbox"].input-validation-error {
     background-position: -750px;
     text-align: center;
     animation: animatedBackground 40s linear infinite;
+    -webkit-animation: animatedBackground 40s linear infinite;
+    -moz-animation: animatedBackground 40s linear infinite;
 }
 
 .navbar, .navbar-inverse, .navbar-fixed-top {
@@ -121,7 +123,7 @@ input[type="checkbox"].input-validation-error {
 }
 .target{
     margin:2px;
-    width: 200px;
+    width: 300px;
     border: 1px solid #07367A;
     text-align: center;
     display: inline-block;
