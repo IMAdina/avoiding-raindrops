@@ -4,29 +4,29 @@
     ViewBag.Title = "Recherche par pays";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script>
-    //$(document).ready(function () {
-    //    function success(json) {
-    //        var d = JSON.Parse(data);
-    //        $.each(data.items, function (item, i) {
-    //            output = '<div>' + item.Station.StationId + ' ' + '' + '</div>';
-    //            $("#target").append(output);
-    //        });
-    //    }
-    //});
-</script>
-
 <h2>Recherche</h2>
 
 <h6>Sélectionnez le pays :</h6>
-<div id="target">
         @using (Ajax.BeginForm("Recherche", "Pays",
         new AjaxOptions()
         {
             InsertionMode = InsertionMode.Replace,
             HttpMethod = "POST",
-            UpdateTargetId = "target",
-            OnSuccess = "success",
+            OnSuccess = "var obj=JSON.parse(data);"+
+            "if($('#ajaxResponse').html()!=''){"+
+            "$('#ajaxResponse>div:first').remove();}"+
+            "var output='';" +
+            "var innerOutput='';"+
+            "var extraInnerOutput='';"+
+             "$.each(obj.Stations, function(i, item){" +
+             "output ='<h4>Code postal: '+item.CodePostal + '<hr></h4></div>';" +
+             "$.each(item.Mesures, function(i, item){" +
+            "innerOutput+='<h5>Instant:'+item.MomentPrelevement+'</h5>"+
+            "</br>Température: '+item.Valeur.Temperature+'</br>Pression: '+item.Valeur.Pression+'</br>précipitations: '+item.Valeur.Precipitations+'</br>ATMO: '+item.Valeur.ATMO;" +
+            "if(i==9){"+
+            "$('<div class=\"target\">').append(output).append(innerOutput).appendTo('#ajaxResponse');"+
+            "innerOutput='';}" +
+            ";});});",
         }))
         {
             @Html.AntiForgeryToken()
@@ -52,5 +52,4 @@
 
             </div>
         }
-
-</div>
+<div id="ajaxResponse"></div>
