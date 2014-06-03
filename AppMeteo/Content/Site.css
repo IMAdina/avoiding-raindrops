@@ -52,6 +52,7 @@ input[type="checkbox"].input-validation-error {
     animation: animatedBackground 40s linear infinite;
     -webkit-animation: animatedBackground 40s linear infinite;
     -moz-animation: animatedBackground 40s linear infinite;
+    -ms-animation: animatedBackground 40s linear infinite;
 }
 
 .navbar, .navbar-inverse, .navbar-fixed-top {
@@ -107,7 +108,15 @@ input[type="checkbox"].input-validation-error {
         background-position: 100%;
     }
 }
+@-ms-keyframes animatedBackground {
+    from {
+        background-position: 0;
+    }
 
+    to {
+        background-position: 100%;
+    }
+}
 .bouton {
     display: inline-block;
     width: 157px;
